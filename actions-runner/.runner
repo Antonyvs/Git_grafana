@@ -1,10 +1,10 @@
 ﻿{
   "agentId": 21,
-  "agentName": "DESKTOP-DPUIGC7",
+  "agentName": "Nitro_V15docker tag monitor:latest anttonys/monitor:latest",
   "poolId": 1,
   "poolName": "Default",
   "serverUrl": "https://pipelinesghubeus6.actions.githubusercontent.com/znQRCgp4Kjxoygsb5IuinLJgxLlWbwPHGeYQNGrZOvmeXNM5e0/",
-  "gitHubUrl": "https://github.com/joaovitortw/Projeto",
+  "gitHubUrl": "https://github.com/Antonyvs/Git_grafana",
   "workFolder": "_work",
   "useV2Flow": true,
   "serverUrlV2": "https://broker.actions.githubusercontent.com/"

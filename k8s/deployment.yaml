@@ -14,11 +14,12 @@ spec:
     spec:
       containers:
         - name: monitor
-          image: anttonyvs/monitor:latest
+          image: anttonys/monitor:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
-
+      imagePullSecrets:
+        - name: teste  # Nome do secret criado
 ---
 apiVersion: v1
 kind: Service

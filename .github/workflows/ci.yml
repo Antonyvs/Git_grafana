@@ -43,7 +43,7 @@ jobs:
       - name: Set image tags
         id: vars
         run: |
-          echo "IMAGE=anttonyvs/monitor" >> $GITHUB_OUTPUT
+          echo "IMAGE=anttonys/monitor" >> $GITHUB_OUTPUT
           echo "TAG_SHA=${GITHUB_SHA}" >> $GITHUB_OUTPUT
 
       - name: Login to DockerHub
@@ -70,7 +70,7 @@ jobs:
           file: ./back/Dockerfile
           push: true
           tags: |
-            anttonyvs/monitor:latest
-            anttonyvs/monitor:${{ steps.vars.outputs.TAG_SHA }}
+            anttonys/monitor:latest
+            anttonys/monitor:${{ steps.vars.outputs.TAG_SHA }}
 
             
