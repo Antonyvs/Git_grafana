@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: monitoramento
-          image: joaovtw/monitor:latest   # Altere se precisar de uma tag diferente
+          image: anttonyvs/monitor:latest   # Altere se precisar de uma tag diferente
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000   # A porta em que o serviço estará ouvindo
