@@ -43,7 +43,7 @@ jobs:
       - name: Set image tags
         id: vars
         run: |
-          echo "IMAGE=joaovtw/monitor" >> $GITHUB_OUTPUT
+          echo "IMAGE=anttonyvs/monitor" >> $GITHUB_OUTPUT
           echo "TAG_SHA=${GITHUB_SHA}" >> $GITHUB_OUTPUT
 
       - name: Login to DockerHub
