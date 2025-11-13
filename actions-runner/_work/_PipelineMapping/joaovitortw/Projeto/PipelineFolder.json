@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "joaovitortw/Projeto",
+  "pipelineDirectory": "Projeto",
+  "workspaceDirectory": "Projeto\\Projeto",
+  "repositories": {
+    "joaovitortw/Projeto": {
+      "repositoryPath": "Projeto\\Projeto",
+      "lastRunOn": "11/12/2025 14:42:46 -03:00"
+    }
+  },
+  "lastRunOn": "11/12/2025 15:02:19 -03:00"
+}

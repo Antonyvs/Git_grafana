@@ -1,0 +1,8 @@
+# Usar a imagem oficial do NGINX
+FROM nginx:latest
+
+# Copiar o arquivo de configuração para dentro do contêiner
+COPY default.conf /etc/nginx/conf.d/
+
+# Expor a porta 80
+EXPOSE 80

@@ -1,0 +1,22 @@
+{
+  "name": "monitoramento",
+  "version": "1.0.0",
+  "description": "Aplicação de monitoramento com Prometheus",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "prom-client": "^14.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

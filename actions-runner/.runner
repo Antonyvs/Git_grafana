@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 21,
+  "agentName": "DESKTOP-DPUIGC7",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus6.actions.githubusercontent.com/znQRCgp4Kjxoygsb5IuinLJgxLlWbwPHGeYQNGrZOvmeXNM5e0/",
+  "gitHubUrl": "https://github.com/joaovitortw/Projeto",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
