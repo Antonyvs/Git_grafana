@@ -55,14 +55,19 @@ jobs:
       - name: Check Docker Info
         run: docker info
 
+      - name: Debug image and tag
+        run: |
+          echo "IMAGE: ${{ steps.vars.outputs.IMAGE }}"
+          echo "TAG_SHA: ${{ steps.vars.outputs.TAG_SHA }}"
+
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
         with:
           context: ./back
-          file: ./back/dockerfile
+          file: ./back/Dockerfile
           push: true
           tags: |
-            ${{ steps.vars.outputs.IMAGE }}:latest
-            ${{ steps.vars.outputs.IMAGE }}:${{ steps.vars.outputs.TAG_SHA }}
+            anttonyvs/monitor:latest
+            anttonyvs/monitor:${{ steps.vars.outputs.TAG_SHA }}
 
             
