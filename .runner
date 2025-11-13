@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 2,
+  "agentName": "NITRO_V15",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus10.actions.githubusercontent.com/YE72u1GRGDMpjqcCBu6fhZ75jNZpY01MXm0lgppnORVrx2eJ4l/",
+  "gitHubUrl": "https://github.com/Antonyvs/Git_grafana",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}

@@ -1,0 +1,4125 @@
+[2025-11-13 20:37:41Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.credentials'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known config file 'Runner': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.runner'
+[2025-11-13 20:37:41Z INFO Worker] Version: 2.329.0
+[2025-11-13 20:37:41Z INFO Worker] Commit: c76c59996c8fa32e989164a5a695efb12608ae5a
+[2025-11-13 20:37:41Z INFO Worker] Culture: pt-BR
+[2025-11-13 20:37:41Z INFO Worker] UI Culture: pt-BR
+[2025-11-13 20:37:41Z INFO Worker] Waiting to receive the job message from the channel.
+[2025-11-13 20:37:41Z INFO ProcessChannel] Receiving message of length 24707, with hash 'e6157bc45f33670a1221ca3c6f3e96f880fbbfbd6f03f45121ff504522004b6d'
+[2025-11-13 20:37:41Z INFO Worker] Message received.
+[2025-11-13 20:37:41Z INFO Worker] Job message:
+ {
+  "environmentVariables": [
+    {
+      "type": 2,
+      "file": 1,
+      "line": 16,
+      "col": 7,
+      "map": [
+        {
+          "key": {
+            "type": 0,
+            "file": 1,
+            "line": 16,
+            "col": 7,
+            "lit": "K8S_NAMESPACE"
+          },
+          "value": {
+            "type": 0,
+            "file": 1,
+            "line": 16,
+            "col": 22,
+            "lit": "default"
+          }
+        }
+      ]
+    }
+  ],
+  "fileTable": [
+    ".github/workflows/cd.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/checkout",
+        "ref": "v4",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 19,
+        "col": 15,
+        "lit": "Checkout"
+      },
+      "contextName": "__actions_checkout",
+      "condition": "success()",
+      "id": "e57d722c-4d80-47b3-909b-4692758ac16d",
+      "name": "__actions_checkout"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 22,
+        "col": 15,
+        "lit": "Ensure kubectl (Windows)"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 24,
+              "col": 14,
+              "lit": "$ErrorActionPreference = 'Stop'\nif (-not (Get-Command kubectl -ErrorAction SilentlyContinue)) {\n  Write-Host \"kubectl não encontrado. Instalando...\"\n  Invoke-WebRequest -UseBasicParsing -Uri https://dl.k8s.io/release/stable.txt -OutFile stable.txt\n  $ver = Get-Content stable.txt\n  $url = \"https://dl.k8s.io/release/$ver/bin/windows/amd64/kubectl.exe\"\n  $bin = Join-Path $env:RUNNER_TEMP \"bin\"\n  New-Item -ItemType Directory -Force -Path $bin | Out-Null\n  Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile (Join-Path $bin \"kubectl.exe\")\n  \"$bin\" | Out-File -FilePath $env:GITHUB_PATH -Encoding ascii -Append\n}\nkubectl version --client=true\n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 23,
+              "col": 16,
+              "lit": "powershell"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "b548f727-d445-488d-a9f5-f12dbef623fe",
+      "name": "__run"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 38,
+        "col": 15,
+        "lit": "Check/Start Minikube"
+      },
+      "contextName": "__run_2",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 40,
+              "col": 14,
+              "lit": "$ErrorActionPreference = 'Stop'\nif (-not (Get-Command minikube -ErrorAction SilentlyContinue)) {\n  throw \"Minikube não está instalado no runner. Instale no mesmo host.\"\n}\n$status = minikube status --output=json | ConvertFrom-Json\nif ($status.Host -ne 'Running' -or $status.Kubelet -ne 'Running' -or $status.APIServer -ne 'Running') {\n  Write-Host \"Minikube não está ativo. Iniciando...\"\n  minikube start --driver=docker\n}\nminikube status\n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 39,
+              "col": 16,
+              "lit": "powershell"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "ac2d52ef-a950-4aa7-a994-882a81702da0",
+      "name": "__run_2"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 52,
+        "col": 15,
+        "lit": "Prepare kubeconfig"
+      },
+      "contextName": "__run_3",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 54,
+              "col": 14,
+              "lit": "$ErrorActionPreference = 'Stop'\n$localCfg = Join-Path $env:USERPROFILE \".kube\\config\"\n$tempDir  = Join-Path $env:RUNNER_TEMP \".kube\"\n$tempCfg  = Join-Path $tempDir \"config\"\nNew-Item -ItemType Directory -Force -Path $tempDir | Out-Null\n\nif (Test-Path $localCfg) {\n  Copy-Item $localCfg $tempCfg -Force\n} else {\n  minikube update-context\n  Copy-Item (Join-Path $env:USERPROFILE \".kube\\config\") $tempCfg -Force\n}\n\n\"KUBECONFIG=$tempCfg\" | Out-File -FilePath $env:GITHUB_ENV -Append\n\n$ctx = kubectl config current-context\nWrite-Host \"Contexto atual: $ctx\"\n$server = kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}'\nWrite-Host \"API Server: $server\"\n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 53,
+              "col": 16,
+              "lit": "powershell"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "f4d3d75d-cef8-4051-b5ce-06431f5030db",
+      "name": "__run_3"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 75,
+        "col": 15,
+        "lit": "Verify cluster connectivity"
+      },
+      "contextName": "__run_4",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 77,
+              "col": 14,
+              "lit": "$ErrorActionPreference = 'Stop'\nkubectl cluster-info\nkubectl get nodes -o wide\n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 76,
+              "col": 16,
+              "lit": "powershell"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "24576a1a-851a-496e-bd3d-db6c5f26ecf3",
+      "name": "__run_4"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 82,
+        "col": 15,
+        "lit": "Diff (pre)"
+      },
+      "contextName": "__run_5",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 85,
+              "col": 14,
+              "lit": "kubectl -n $env:K8S_NAMESPACE diff -f k8s/ | Out-Host\n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 83,
+              "col": 16,
+              "lit": "powershell"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "continueOnError": {
+        "type": 5,
+        "file": 1,
+        "line": 84,
+        "col": 28,
+        "bool": true
+      },
+      "id": "24263bfa-a457-499a-9446-4dd6dcd10cd2",
+      "name": "__run_5"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 88,
+        "col": 15,
+        "lit": "Apply manifests"
+      },
+      "contextName": "__run_6",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 90,
+              "col": 14,
+              "lit": "kubectl -n $env:K8S_NAMESPACE apply -f k8s/\n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 89,
+              "col": 16,
+              "lit": "powershell"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "db99b788-a362-44f2-be0d-27a1289df384",
+      "name": "__run_6"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 93,
+        "col": 15,
+        "lit": "Wait rollout (all deployments)"
+      },
+      "contextName": "__run_7",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 95,
+              "col": 14,
+              "lit": "$ErrorActionPreference = 'Stop'\n$list = kubectl -n $env:K8S_NAMESPACE get deploy -o jsonpath='{range .items[*]}{.metadata.name}{\"`n\"}{end}'\n$names = $list -split \"`n\" | Where-Object { $_ -and $_.Trim().Length -gt 0 }\nif (-not $names -or $names.Count -eq 0) {\n  Write-Host \"Nenhum Deployment encontrado no namespace '$env:K8S_NAMESPACE'. Pulando espera de rollout.\"\n  exit 0\n}\nforeach ($d in $names) {\n  Write-Host \"Aguardando rollout do Deployment '$d'...\"\n  kubectl -n $env:K8S_NAMESPACE rollout status deployment/$d --timeout=180s\n}\n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 94,
+              "col": 16,
+              "lit": "powershell"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "9002e138-7f5c-4b68-b457-caf79dec8f4f",
+      "name": "__run_7"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 108,
+        "col": 15,
+        "lit": "Post status"
+      },
+      "contextName": "__run_8",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 110,
+              "col": 14,
+              "lit": "kubectl -n $env:K8S_NAMESPACE get all -o wide\nkubectl -n $env:K8S_NAMESPACE get events --sort-by=.lastTimestamp | Select-Object -Last 80 | Out-Host\n"
+            }
+          },
+          {
+            "key": "shell",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 109,
+              "col": 16,
+              "lit": "powershell"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "bbf779b8-b752-4dc2-9e49-8c1c0f3c41ff",
+      "name": "__run_8"
+    }
+  ],
+  "variables": {
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "RunService.FixEmbeddedIssues": {
+      "value": "true"
+    },
+    "actions_add_check_run_id_to_job_context": {
+      "value": "true"
+    },
+    "actions_container_action_runner_temp": {
+      "value": "false"
+    },
+    "actions_display_helpful_actions_download_errors": {
+      "value": "true"
+    },
+    "actions_skip_retry_complete_job_upon_known_errors": {
+      "value": "true"
+    },
+    "actions_uses_cache_service_v2": {
+      "value": "true"
+    },
+    "github_token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.from_run_service": {
+      "value": "true"
+    },
+    "system.github.job": {
+      "value": "deploy"
+    },
+    "system.github.launch_endpoint": {
+      "value": "https://launch.actions.githubusercontent.com"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "true"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Contents\":\"read\",\"Metadata\":\"read\",\"Packages\":\"read\"}"
+    },
+    "system.orchestrationId": {
+      "value": "6f3f92e0-c003-43b8-b7b1-871c81d31d21.deploy.__default"
+    },
+    "system.phaseDisplayName": {
+      "value": "deploy"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "RunnerJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "actions",
+    "version": 0,
+    "planId": "6f3f92e0-c003-43b8-b7b1-871c81d31d21",
+    "planGroup": null,
+    "artifactUri": null,
+    "artifactLocation": null,
+    "definition": null,
+    "owner": null
+  },
+  "timeline": {
+    "id": "6f3f92e0-c003-43b8-b7b1-871c81d31d21",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "111c62a7-7bce-59b5-bcc5-cdf8ee82e860",
+  "jobDisplayName": "deploy",
+  "jobName": "__default",
+  "requestId": 0,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "",
+          "ServerName": "",
+          "CacheServerUrl": "https://artifactcache.actions.githubusercontent.com/YE72u1GRGDMpjqcCBu6fhZ75jNZpY01MXm0lgppnORVrx2eJ4l/",
+          "FeedStreamUrl": "wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "PipelinesServiceUrl": "https://pipelinesghubeus10.actions.githubusercontent.com/YE72u1GRGDMpjqcCBu6fhZ75jNZpY01MXm0lgppnORVrx2eJ4l/",
+          "GenerateIdTokenUrl": ""
+        },
+        "name": "SystemVssConnection",
+        "url": "https://run-actions-3-azure-eastus.actions.githubusercontent.com/7/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": "***"
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "e0fdde8034985d83e8c1c6a9d64aeab9630ac603"
+        },
+        {
+          "k": "repository",
+          "v": "Antonyvs/Git_grafana"
+        },
+        {
+          "k": "repository_owner",
+          "v": "Antonyvs"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "110572528"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/Antonyvs/Git_grafana.git"
+        },
+        {
+          "k": "run_id",
+          "v": "19344819057"
+        },
+        {
+          "k": "run_number",
+          "v": "8"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "actor_id",
+          "v": "110572528"
+        },
+        {
+          "k": "actor",
+          "v": "Antonyvs"
+        },
+        {
+          "k": "workflow",
+          "v": "CD"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "e0fdde8034985d83e8c1c6a9d64aeab9630ac603"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "2815ad278fb65d1da1ead53cd0040c770ed1505b"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "110572528+Antonyvs@users.noreply.github.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Antony Schneider"
+                              },
+                              {
+                                "k": "username",
+                                "v": "Antonyvs"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "110572528+Antonyvs@users.noreply.github.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Antony Schneider"
+                              },
+                              {
+                                "k": "username",
+                                "v": "Antonyvs"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "e0fdde8034985d83e8c1c6a9d64aeab9630ac603"
+                        },
+                        {
+                          "k": "message",
+                          "v": "se deus quiser funciona"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2025-11-13T17:24:25-03:00"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "92a54f4e21c6670d8e34ef6e6df7448e814f8452"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/Antonyvs/Git_grafana/commit/e0fdde8034985d83e8c1c6a9d64aeab9630ac603"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.com/Antonyvs/Git_grafana/compare/2815ad278fb6...e0fdde803498"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "110572528+Antonyvs@users.noreply.github.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Antony Schneider"
+                          },
+                          {
+                            "k": "username",
+                            "v": "Antonyvs"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "110572528+Antonyvs@users.noreply.github.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Antony Schneider"
+                          },
+                          {
+                            "k": "username",
+                            "v": "Antonyvs"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "e0fdde8034985d83e8c1c6a9d64aeab9630ac603"
+                    },
+                    {
+                      "k": "message",
+                      "v": "se deus quiser funciona"
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2025-11-13T17:24:25-03:00"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "92a54f4e21c6670d8e34ef6e6df7448e814f8452"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/Antonyvs/Git_grafana/commit/e0fdde8034985d83e8c1c6a9d64aeab9630ac603"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "110572528+Antonyvs@users.noreply.github.com"
+                    },
+                    {
+                      "k": "name",
+                      "v": "Antonyvs"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/Antonyvs/Git_grafana.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1763053267.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "Antonyvs/Git_grafana"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/Antonyvs/Git_grafana.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": false
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "homepage",
+                      "v": null
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/Antonyvs/Git_grafana"
+                    },
+                    {
+                      "k": "id",
+                      "v": 1095899322.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "JavaScript"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "Git_grafana"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDOQVIYug"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/110572528?v=4"
+                          },
+                          {
+                            "k": "email",
+                            "v": "110572528+Antonyvs@users.noreply.github.com"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/Antonyvs/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/Antonyvs/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/Antonyvs/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/Antonyvs/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/Antonyvs"
+                          },
+                          {
+                            "k": "id",
+                            "v": 110572528.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "Antonyvs"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Antonyvs"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "U_kgDOBpcz8A"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/Antonyvs/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/Antonyvs/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/Antonyvs/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/Antonyvs/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/Antonyvs/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/Antonyvs"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1763065471.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 177818.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:Antonyvs/Git_grafana.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/Antonyvs/Git_grafana"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2025-11-13T20:18:46Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/repos/Antonyvs/Git_grafana"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/110572528?v=4"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/Antonyvs/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/Antonyvs/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/Antonyvs/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/Antonyvs/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/Antonyvs"
+                    },
+                    {
+                      "k": "id",
+                      "v": 110572528.0
+                    },
+                    {
+                      "k": "login",
+                      "v": "Antonyvs"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "U_kgDOBpcz8A"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/Antonyvs/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/Antonyvs/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/Antonyvs/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/Antonyvs/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/Antonyvs/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/Antonyvs"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "workflow_ref",
+          "v": "Antonyvs/Git_grafana/.github/workflows/cd.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "e0fdde8034985d83e8c1c6a9d64aeab9630ac603"
+        },
+        {
+          "k": "repository_id",
+          "v": "1095899322"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "Antonyvs"
+        }
+      ]
+    },
+    "inputs": {
+      "t": 2
+    },
+    "job": {
+      "t": 2,
+      "d": [
+        {
+          "k": "check_run_id",
+          "v": 55342322640.0
+        }
+      ]
+    },
+    "matrix": null,
+    "needs": {
+      "t": 2
+    },
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "vars": {
+      "t": 2
+    }
+  },
+  "billingOwnerId": "U_kgDOBpcz8A"
+}
+[2025-11-13 20:37:41Z INFO JobRunner] Job ID 111c62a7-7bce-59b5-bcc5-cdf8ee82e860
+[2025-11-13 20:37:41Z INFO ConfigurationStore] currentAssemblyLocation: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin\Runner.Worker.dll
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO ConfigurationStore] binPath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO ConfigurationStore] RootFolder: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known config file 'Runner': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.runner'
+[2025-11-13 20:37:41Z INFO ConfigurationStore] ConfigFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.runner
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known config file 'MigratedRunner': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.runner_migrated'
+[2025-11-13 20:37:41Z INFO ConfigurationStore] MigratedConfigFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.runner_migrated
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.credentials'
+[2025-11-13 20:37:41Z INFO ConfigurationStore] CredFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.credentials
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.credentials_migrated'
+[2025-11-13 20:37:41Z INFO ConfigurationStore] MigratedCredFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.credentials_migrated
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known config file 'Service': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.service'
+[2025-11-13 20:37:41Z INFO ConfigurationStore] ServiceConfigFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.service
+[2025-11-13 20:37:41Z INFO ConfigurationStore] Read setting file: 393 chars
+[2025-11-13 20:37:41Z INFO JobRunner] Initializing launch client
+[2025-11-13 20:37:41Z INFO JobServerQueue] Initializing results client
+[2025-11-13 20:37:41Z INFO ResultServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2025-11-13 20:37:41Z INFO ResultServer] Attempting to start websocket client with delay 00:00:00.
+[2025-11-13 20:37:41Z INFO JobServerQueue] Start process web console line queue.
+[2025-11-13 20:37:41Z INFO JobServerQueue] Start process file upload queue.
+[2025-11-13 20:37:41Z INFO JobServerQueue] Start results file upload queue.
+[2025-11-13 20:37:41Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-11-13 20:37:41Z INFO JobServerQueue] Start process timeline update queue.
+[2025-11-13 20:37:41Z INFO ExecutionContext] Initializing Job context
+[2025-11-13 20:37:41Z INFO ExecutionContext] Initialize GitHub context
+[2025-11-13 20:37:41Z INFO ExecutionContext] Initialize Env context
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:41Z INFO JobRunner] Starting the job execution context.
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:41Z INFO JobRunner] Validating directory permissions for: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Tools': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_tool'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:37:41Z INFO JobRunner] Getting job extension.
+[2025-11-13 20:37:41Z INFO JobRunner] Initialize job. Getting all job steps.
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.credentials'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known config file 'SetupInfo': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\.setup_info'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:41Z INFO PipelineDirectoryManager] Loading tracking config if exists: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_PipelineMapping\Antonyvs/Git_grafana\PipelineFolder.json
+[2025-11-13 20:37:41Z INFO PipelineDirectoryManager] Creating a new tracking config file.
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:41Z INFO PipelineDirectoryManager] Creating pipeline directory.
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:41Z INFO PipelineDirectoryManager] Creating workspace directory.
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:41Z INFO JobExtension] Downloading actions
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:41Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:37:41Z INFO Worker] Listening for cancel message from the channel.
+[2025-11-13 20:37:41Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2025-11-13 20:37:41Z INFO ResultServer] Successfully started websocket client.
+[2025-11-13 20:37:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a66940de-ad8b-44f5-937f-6d764604b93d', success rate: 1/1.
+[2025-11-13 20:37:42Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:42Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:42Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:42Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:37:42Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:42Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:42Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:42Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:37:42Z INFO ActionManager] Save archive 'https://api.github.com/repos/actions/checkout/zipball/08eba0b27e820071cde6df949e0beb9ba4906955' into C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions\_temp_9fe37239-b2f1-4eb2-aa82-6ae93da7450b\0374f552-b563-4278-b67f-b54e2db2b58a.zip.
+[2025-11-13 20:37:42Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a66940de-ad8b-44f5-937f-6d764604b93d', success rate: 1/1.
+[2025-11-13 20:37:42Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2025-11-13 20:37:42Z INFO ActionManager] Request URL: https://api.github.com/repos/actions/checkout/zipball/08eba0b27e820071cde6df949e0beb9ba4906955 X-GitHub-Request-Id: D4A0:2AA31B:CD727:259DF9:69164197 Http Status: OK
+[2025-11-13 20:37:43Z INFO ActionManager] Finished getting action repository.
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-13 20:37:43Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:37:43Z INFO ActionManager] Load action that reference repository from 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions\actions\checkout\v4'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-13 20:37:43Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-11-13 20:37:43Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-11-13 20:37:43Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-11-13 20:37:43Z INFO JobExtension] Adding .
+[2025-11-13 20:37:43Z INFO JobExtension] Adding .
+[2025-11-13 20:37:43Z INFO JobExtension] Adding .
+[2025-11-13 20:37:43Z INFO JobExtension] Adding .
+[2025-11-13 20:37:43Z INFO JobExtension] Adding .
+[2025-11-13 20:37:43Z INFO JobExtension] Adding .
+[2025-11-13 20:37:43Z INFO JobExtension] Adding .
+[2025-11-13 20:37:43Z INFO JobExtension] Adding .
+[2025-11-13 20:37:43Z INFO JobExtension] Adding .
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO JobExtension] Total accessible running process: 277.
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO JobExtension] Start checking service connectivity in background.
+[2025-11-13 20:37:43Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "a66940de-ad8b-44f5-937f-6d764604b93d",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2025-11-13T20:37:41.3755189Z",
+  "finishTime": "2025-11-13T20:37:43.1818138Z"
+}.
+[2025-11-13 20:37:43Z INFO JobRunner] Total job steps: 9.
+[2025-11-13 20:37:43Z INFO JobRunner] Run all job steps.
+[2025-11-13 20:37:43Z INFO StepsRunner] Processing step: DisplayName='Checkout'
+[2025-11-13 20:37:43Z INFO StepsRunner] Evaluating: success()
+[2025-11-13 20:37:43Z INFO StepsRunner] Result: true
+[2025-11-13 20:37:43Z INFO StepsRunner] Starting the step.
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-13 20:37:43Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper] Process started with process id 19888, waiting for process exit.
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper] Finished process 19888 with exit code 0, and elapsed time 00:00:00.0089413.
+[2025-11-13 20:37:43Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:37:43Z INFO ActionManager] Load action that reference repository from 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions\actions\checkout\v4'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-13 20:37:43Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-11-13 20:37:43Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-11-13 20:37:43Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-11-13 20:37:43Z INFO ExecutionContext] Reserve record order 11 to 20 for post job actions.
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:37:43Z INFO ExecutionContext] Write event payload to C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_github_workflow\event.json
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:37:43Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "Antonyvs/Git_grafana"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 76,
+  "col": 14,
+  "lit": "1"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:37:43Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-11-13 20:37:43Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-13 20:37:43Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:43Z INFO HostContext] Well known directory 'Externals': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\externals'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\externals\node20\bin\node.exe'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Arguments: '"C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions\actions\checkout\v4\dist/index.js"'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\Git_grafana\Git_grafana'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:37:43Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:37:43Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:37:43Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_a66940de-ad8b-44f5-937f-6d764604b93d.1
+[2025-11-13 20:37:43Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-11-13 20:37:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'a66940de-ad8b-44f5-937f-6d764604b93d', success rate: 1/1.
+[2025-11-13 20:37:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:37:44Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-11-13 20:37:44Z INFO ProcessInvokerWrapper] Process started with process id 5984, waiting for process exit.
+[2025-11-13 20:37:45Z INFO AddMaskCommandExtension] Add new secret mask with length of 76
+[2025-11-13 20:37:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:37:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:37:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:37:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:37:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:37:53Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:37:53Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:37:53Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:37:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:37:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:38:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:38:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:38:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Finished process 5984 with exit code 0, and elapsed time 00:00:18.0143392.
+[2025-11-13 20:38:01Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_runner_file_commands\step_summary_ea716740-1edc-4820-9ea6-b3987b385931) is empty; skipping attachment upload
+[2025-11-13 20:38:01Z INFO StepsRunner] Step result: 
+[2025-11-13 20:38:01Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "e57d722c-4d80-47b3-909b-4692758ac16d",
+  "stepContextName": "__actions_checkout",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 19,
+  "startTime": "2025-11-13T20:37:43.18985Z",
+  "finishTime": "2025-11-13T20:38:01.2674262Z"
+}.
+[2025-11-13 20:38:01Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-13 20:38:01Z INFO StepsRunner] Current state: job state = ''
+[2025-11-13 20:38:01Z INFO StepsRunner] Processing step: DisplayName='Ensure kubectl (Windows)'
+[2025-11-13 20:38:01Z INFO StepsRunner] Evaluating: success()
+[2025-11-13 20:38:01Z INFO StepsRunner] Result: true
+[2025-11-13 20:38:01Z INFO StepsRunner] Starting the step.
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-13 20:38:01Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Process started with process id 1608, waiting for process exit.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Finished process 1608 with exit code 0, and elapsed time 00:00:00.0068729.
+[2025-11-13 20:38:01Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:01Z INFO ExecutionContext] Write event payload to C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_github_workflow\event.json
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:01Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-13 20:38:01Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-13 20:38:01Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:01Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:01Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:01Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\a4d7264d-015a-4f70-a8f3-eb960c9ef66f.ps1'"'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\Git_grafana\Git_grafana'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Process started with process id 19252, waiting for process exit.
+[2025-11-13 20:38:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'e57d722c-4d80-47b3-909b-4692758ac16d', success rate: 1/1.
+[2025-11-13 20:38:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'b548f727-d445-488d-a9f5-f12dbef623fe', success rate: 1/1.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Finished process 19252 with exit code 0, and elapsed time 00:00:00.2325736.
+[2025-11-13 20:38:01Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_runner_file_commands\step_summary_bffd0a4b-3ac1-4339-88d6-f51d9af3f6d1) is empty; skipping attachment upload
+[2025-11-13 20:38:01Z INFO StepsRunner] Step result: 
+[2025-11-13 20:38:01Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "b548f727-d445-488d-a9f5-f12dbef623fe",
+  "stepContextName": "__run",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-11-13T20:38:01.2680651Z",
+  "finishTime": "2025-11-13T20:38:01.5255807Z"
+}.
+[2025-11-13 20:38:01Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-13 20:38:01Z INFO StepsRunner] Current state: job state = ''
+[2025-11-13 20:38:01Z INFO StepsRunner] Processing step: DisplayName='Check/Start Minikube'
+[2025-11-13 20:38:01Z INFO StepsRunner] Evaluating: success()
+[2025-11-13 20:38:01Z INFO StepsRunner] Result: true
+[2025-11-13 20:38:01Z INFO StepsRunner] Starting the step.
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-13 20:38:01Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Process started with process id 13660, waiting for process exit.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Finished process 13660 with exit code 0, and elapsed time 00:00:00.0053549.
+[2025-11-13 20:38:01Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:01Z INFO ExecutionContext] Write event payload to C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_github_workflow\event.json
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:01Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-13 20:38:01Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-13 20:38:01Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-13 20:38:01Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:01Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:01Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:01Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:01Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\14e44b49-63a4-43db-9fb3-1da166396d96.ps1'"'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\Git_grafana\Git_grafana'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:01Z INFO ProcessInvokerWrapper] Process started with process id 7876, waiting for process exit.
+[2025-11-13 20:38:01Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:38:01Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_e57d722c-4d80-47b3-909b-4692758ac16d.1
+[2025-11-13 20:38:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'b548f727-d445-488d-a9f5-f12dbef623fe', success rate: 1/1.
+[2025-11-13 20:38:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ac2d52ef-a950-4aa7-a994-882a81702da0', success rate: 1/1.
+[2025-11-13 20:38:01Z INFO JobServerQueue] Try to upload 2 log files or attachments, success rate: 2/2.
+[2025-11-13 20:38:02Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:38:02Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_b548f727-d445-488d-a9f5-f12dbef623fe.1
+[2025-11-13 20:38:02Z INFO JobServerQueue] Tried to upload 2 file(s) to results, success rate: 2/2.
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] Finished process 7876 with exit code 0, and elapsed time 00:00:01.2724018.
+[2025-11-13 20:38:02Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_runner_file_commands\step_summary_09ef453a-1d7c-425b-92be-450846bd72e7) is empty; skipping attachment upload
+[2025-11-13 20:38:02Z INFO StepsRunner] Step result: 
+[2025-11-13 20:38:02Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "ac2d52ef-a950-4aa7-a994-882a81702da0",
+  "stepContextName": "__run_2",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2025-11-13T20:38:01.5261723Z",
+  "finishTime": "2025-11-13T20:38:02.8173282Z"
+}.
+[2025-11-13 20:38:02Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-13 20:38:02Z INFO StepsRunner] Current state: job state = ''
+[2025-11-13 20:38:02Z INFO StepsRunner] Processing step: DisplayName='Prepare kubeconfig'
+[2025-11-13 20:38:02Z INFO StepsRunner] Evaluating: success()
+[2025-11-13 20:38:02Z INFO StepsRunner] Result: true
+[2025-11-13 20:38:02Z INFO StepsRunner] Starting the step.
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:02Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-13 20:38:02Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] Process started with process id 17696, waiting for process exit.
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] Finished process 17696 with exit code 0, and elapsed time 00:00:00.0065267.
+[2025-11-13 20:38:02Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:02Z INFO ExecutionContext] Write event payload to C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_github_workflow\event.json
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:02Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-13 20:38:02Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-13 20:38:02Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-13 20:38:02Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:02Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:02Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:02Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:02Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\a8739b5f-2e6c-4f63-8ab0-2a3c2f7fdf4e.ps1'"'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\Git_grafana\Git_grafana'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:02Z INFO ProcessInvokerWrapper] Process started with process id 6200, waiting for process exit.
+[2025-11-13 20:38:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'ac2d52ef-a950-4aa7-a994-882a81702da0', success rate: 1/1.
+[2025-11-13 20:38:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f4d3d75d-cef8-4051-b5ce-06431f5030db', success rate: 1/1.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Finished process 6200 with exit code 0, and elapsed time 00:00:00.3259621.
+[2025-11-13 20:38:03Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_runner_file_commands\step_summary_60b45e39-f8bc-4251-8532-52a91ef833dd) is empty; skipping attachment upload
+[2025-11-13 20:38:03Z INFO StepsRunner] Step result: 
+[2025-11-13 20:38:03Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "f4d3d75d-cef8-4051-b5ce-06431f5030db",
+  "stepContextName": "__run_3",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-11-13T20:38:02.8179145Z",
+  "finishTime": "2025-11-13T20:38:03.1602768Z"
+}.
+[2025-11-13 20:38:03Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-13 20:38:03Z INFO StepsRunner] Current state: job state = ''
+[2025-11-13 20:38:03Z INFO StepsRunner] Processing step: DisplayName='Verify cluster connectivity'
+[2025-11-13 20:38:03Z INFO StepsRunner] Evaluating: success()
+[2025-11-13 20:38:03Z INFO StepsRunner] Result: true
+[2025-11-13 20:38:03Z INFO StepsRunner] Starting the step.
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-13 20:38:03Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Process started with process id 17992, waiting for process exit.
+[2025-11-13 20:38:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f4d3d75d-cef8-4051-b5ce-06431f5030db', success rate: 1/1.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Finished process 17992 with exit code 0, and elapsed time 00:00:00.0070790.
+[2025-11-13 20:38:03Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:03Z INFO ExecutionContext] Write event payload to C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_github_workflow\event.json
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:03Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-13 20:38:03Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-13 20:38:03Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:03Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:03Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:03Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\59b23b22-d80a-44b7-a146-1dbf30cf0e87.ps1'"'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\Git_grafana\Git_grafana'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Process started with process id 3296, waiting for process exit.
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '24576a1a-851a-496e-bd3d-db6c5f26ecf3', success rate: 1/1.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Finished process 3296 with exit code 0, and elapsed time 00:00:00.3173865.
+[2025-11-13 20:38:03Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_runner_file_commands\step_summary_30073872-5ce8-4f2d-a3e0-f31bff581445) is empty; skipping attachment upload
+[2025-11-13 20:38:03Z INFO StepsRunner] Step result: 
+[2025-11-13 20:38:03Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "24576a1a-851a-496e-bd3d-db6c5f26ecf3",
+  "stepContextName": "__run_4",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-11-13T20:38:03.1608392Z",
+  "finishTime": "2025-11-13T20:38:03.4968484Z"
+}.
+[2025-11-13 20:38:03Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-13 20:38:03Z INFO StepsRunner] Current state: job state = ''
+[2025-11-13 20:38:03Z INFO StepsRunner] Processing step: DisplayName='Diff (pre)'
+[2025-11-13 20:38:03Z INFO StepsRunner] Evaluating: success()
+[2025-11-13 20:38:03Z INFO StepsRunner] Result: true
+[2025-11-13 20:38:03Z INFO StepsRunner] Starting the step.
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-13 20:38:03Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Process started with process id 23008, waiting for process exit.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Finished process 23008 with exit code 0, and elapsed time 00:00:00.0061855.
+[2025-11-13 20:38:03Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:03Z INFO ExecutionContext] Write event payload to C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_github_workflow\event.json
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:03Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-13 20:38:03Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-13 20:38:03Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-13 20:38:03Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:03Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:03Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:03Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:03Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\d200ec6b-73d6-43bf-8c98-e4101f9486cb.ps1'"'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\Git_grafana\Git_grafana'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:03Z INFO ProcessInvokerWrapper] Process started with process id 12848, waiting for process exit.
+[2025-11-13 20:38:03Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:38:03Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_ac2d52ef-a950-4aa7-a994-882a81702da0.1
+[2025-11-13 20:38:03Z INFO JobServerQueue] Try to upload 3 log files or attachments, success rate: 3/3.
+[2025-11-13 20:38:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '24576a1a-851a-496e-bd3d-db6c5f26ecf3', success rate: 1/1.
+[2025-11-13 20:38:03Z INFO JobServerQueue] Try to append 1 batches web console lines for record '24263bfa-a457-499a-9446-4dd6dcd10cd2', success rate: 1/1.
+[2025-11-13 20:38:04Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:38:04Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_f4d3d75d-cef8-4051-b5ce-06431f5030db.1
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] Finished process 12848 with exit code 1, and elapsed time 00:00:00.7776327.
+[2025-11-13 20:38:04Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_runner_file_commands\step_summary_0bcfcb6c-67fe-46ca-af46-37c90c5e7403) is empty; skipping attachment upload
+[2025-11-13 20:38:04Z INFO ExecutionContext] Updated step result (continue on error)
+[2025-11-13 20:38:04Z INFO StepsRunner] Step result: Succeeded
+[2025-11-13 20:38:04Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "24263bfa-a457-499a-9446-4dd6dcd10cd2",
+  "stepContextName": "__run_5",
+  "result": "succeeded",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-11-13T20:38:03.4974603Z",
+  "finishTime": "2025-11-13T20:38:04.2919239Z"
+}.
+[2025-11-13 20:38:04Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-13 20:38:04Z INFO StepsRunner] Current state: job state = ''
+[2025-11-13 20:38:04Z INFO StepsRunner] Processing step: DisplayName='Apply manifests'
+[2025-11-13 20:38:04Z INFO StepsRunner] Evaluating: success()
+[2025-11-13 20:38:04Z INFO StepsRunner] Result: true
+[2025-11-13 20:38:04Z INFO StepsRunner] Starting the step.
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:04Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-13 20:38:04Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] Process started with process id 17924, waiting for process exit.
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] Finished process 17924 with exit code 0, and elapsed time 00:00:00.0059604.
+[2025-11-13 20:38:04Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:04Z INFO ExecutionContext] Write event payload to C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_github_workflow\event.json
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:04Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-13 20:38:04Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-13 20:38:04Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-13 20:38:04Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:04Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:04Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:04Z INFO ScriptHandler] Which2: 'powershell'
+[2025-11-13 20:38:04Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\dc789a16-3f0a-4193-a930-e909083d8723.ps1'"'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\Git_grafana\Git_grafana'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:04Z INFO ProcessInvokerWrapper] Process started with process id 9604, waiting for process exit.
+[2025-11-13 20:38:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record '24263bfa-a457-499a-9446-4dd6dcd10cd2', success rate: 1/1.
+[2025-11-13 20:38:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'db99b788-a362-44f2-be0d-27a1289df384', success rate: 1/1.
+[2025-11-13 20:38:04Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:38:04Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_24576a1a-851a-496e-bd3d-db6c5f26ecf3.1
+[2025-11-13 20:38:04Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-11-13 20:38:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'db99b788-a362-44f2-be0d-27a1289df384', success rate: 1/1.
+[2025-11-13 20:38:05Z INFO JobServerQueue] Tried to upload 3 file(s) to results, success rate: 3/3.
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] Finished process 9604 with exit code 1, and elapsed time 00:00:00.9017643.
+[2025-11-13 20:38:05Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_runner_file_commands\step_summary_db245ce8-990d-40bb-aa2f-1c15e1deb495) is empty; skipping attachment upload
+[2025-11-13 20:38:05Z INFO StepsRunner] Step result: Failed
+[2025-11-13 20:38:05Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "db99b788-a362-44f2-be0d-27a1289df384",
+  "stepContextName": "__run_6",
+  "result": "failed",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-11-13T20:38:04.2931196Z",
+  "finishTime": "2025-11-13T20:38:05.2107759Z"
+}.
+[2025-11-13 20:38:05Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2025-11-13 20:38:05Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-11-13 20:38:05Z INFO StepsRunner] Processing step: DisplayName='Wait rollout (all deployments)'
+[2025-11-13 20:38:05Z INFO StepsRunner] Evaluating: success()
+[2025-11-13 20:38:05Z INFO StepsRunner] Result: false
+[2025-11-13 20:38:05Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-11-13 20:38:05Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-11-13 20:38:05Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-11-13 20:38:05Z INFO StepsRunner] Processing step: DisplayName='Post status'
+[2025-11-13 20:38:05Z INFO StepsRunner] Evaluating: success()
+[2025-11-13 20:38:05Z INFO StepsRunner] Result: false
+[2025-11-13 20:38:05Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-11-13 20:38:05Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-11-13 20:38:05Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-11-13 20:38:05Z INFO StepsRunner] Processing step: DisplayName='Post Checkout'
+[2025-11-13 20:38:05Z INFO StepsRunner] Evaluating: always()
+[2025-11-13 20:38:05Z INFO StepsRunner] Result: true
+[2025-11-13 20:38:05Z INFO StepsRunner] Starting the step.
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:05Z INFO StepsRunner] Which2: 'chcp'
+[2025-11-13 20:38:05Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] Process started with process id 20976, waiting for process exit.
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] Finished process 20976 with exit code 0, and elapsed time 00:00:00.0058467.
+[2025-11-13 20:38:05Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:38:05Z INFO ActionManager] Load action that reference repository from 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions\actions\checkout\v4'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Actions': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions'
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "ssh-user"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 14,
+          "lit": "git"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 52,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 54,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 57,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 59,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 3,
+          "lit": "filter"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 69,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 76,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 77,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 79,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 80,
+          "col": 3,
+          "lit": "show-progress"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 94,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 95,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 97,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 98,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node20",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-11-13 20:38:05Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-11-13 20:38:05Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-11-13 20:38:05Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:05Z INFO ExecutionContext] Write event payload to C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_github_workflow\event.json
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Work': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Temp': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp'
+[2025-11-13 20:38:05Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "Antonyvs/Git_grafana"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'ssh-user': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 51,
+  "col": 14,
+  "lit": "git"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 54,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 59,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'filter': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": ""
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 69,
+  "col": 14,
+  "lit": ""
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 76,
+  "col": 14,
+  "lit": "1"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 79,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'show-progress': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 94,
+  "col": 14,
+  "lit": "false"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 97,
+  "col": 14,
+  "lit": "true"
+}
+[2025-11-13 20:38:05Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-11-13 20:38:05Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command error
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command group
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-11-13 20:38:05Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:05Z INFO HostContext] Well known directory 'Externals': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\externals'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] Starting process:
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   File name: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\externals\node20\bin\node.exe'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Arguments: '"C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_actions\actions\checkout\v4\dist/index.js"'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\Git_grafana\Git_grafana'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-11-13 20:38:05Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'db99b788-a362-44f2-be0d-27a1289df384', success rate: 1/1.
+[2025-11-13 20:38:05Z INFO ProcessInvokerWrapper] Process started with process id 1864, waiting for process exit.
+[2025-11-13 20:38:05Z INFO JobServerQueue] Try to append 1 batches web console lines for record '27f75a0d-daa6-4801-9783-be7e52e1b2c5', success rate: 1/1.
+[2025-11-13 20:38:05Z INFO AddMaskCommandExtension] Add new secret mask with length of 32
+[2025-11-13 20:38:05Z INFO JobServerQueue] Try to append 1 batches web console lines for record '27f75a0d-daa6-4801-9783-be7e52e1b2c5', success rate: 1/1.
+[2025-11-13 20:38:05Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-11-13 20:38:06Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:38:06Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_24263bfa-a457-499a-9446-4dd6dcd10cd2.1
+[2025-11-13 20:38:06Z INFO JobServerQueue] Try to append 1 batches web console lines for record '27f75a0d-daa6-4801-9783-be7e52e1b2c5', success rate: 1/1.
+[2025-11-13 20:38:06Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:06Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-11-13 20:38:06Z INFO ProcessInvokerWrapper] Finished process 1864 with exit code 0, and elapsed time 00:00:01.2059179.
+[2025-11-13 20:38:06Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp\_runner_file_commands\step_summary_bf956ab4-3165-4fdc-a8d7-5927b1230d2d) is empty; skipping attachment upload
+[2025-11-13 20:38:06Z INFO StepsRunner] Step result: 
+[2025-11-13 20:38:06Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v4",
+  "type": "node20",
+  "stage": "Post",
+  "stepId": "27f75a0d-daa6-4801-9783-be7e52e1b2c5",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2025-11-13T20:38:05.2119522Z",
+  "finishTime": "2025-11-13T20:38:06.4332069Z"
+}.
+[2025-11-13 20:38:06Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-11-13 20:38:06Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-11-13 20:38:06Z INFO JobRunner] Finalize job.
+[2025-11-13 20:38:06Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:06Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:06Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:38:06Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:06Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:06Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:38:06Z INFO JobExtension] Initialize Env context
+[2025-11-13 20:38:06Z INFO JobExtension] Initialize steps context
+[2025-11-13 20:38:06Z INFO JobExtension] Total accessible running process: 277.
+[2025-11-13 20:38:06Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "eabca6f4-c324-4785-bcda-18035c500b8c",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-11-13T20:38:06.4361052Z",
+  "finishTime": "2025-11-13T20:38:06.4414035Z"
+}.
+[2025-11-13 20:38:06Z INFO JobRunner] Job result after all job steps finish: Failed
+[2025-11-13 20:38:06Z INFO JobRunner] Completing the job execution context.
+[2025-11-13 20:38:06Z INFO JobRunner] Shutting down the job server queue.
+[2025-11-13 20:38:06Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2025-11-13 20:38:06Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:38:06Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_db99b788-a362-44f2-be0d-27a1289df384.1
+[2025-11-13 20:38:06Z INFO JobServerQueue] Tried to upload 2 file(s) to results, success rate: 2/2.
+[2025-11-13 20:38:07Z INFO JobServerQueue] All queue process task stopped.
+[2025-11-13 20:38:07Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'eabca6f4-c324-4785-bcda-18035c500b8c', success rate: 1/1.
+[2025-11-13 20:38:07Z INFO JobServerQueue] Web console line queue drained.
+[2025-11-13 20:38:07Z INFO JobServerQueue] Uploading 3 files in one shot.
+[2025-11-13 20:38:07Z INFO JobServerQueue] Try to upload 3 log files or attachments, success rate: 3/3.
+[2025-11-13 20:38:07Z INFO JobServerQueue] File upload queue drained.
+[2025-11-13 20:38:07Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-11-13 20:38:07Z INFO JobServerQueue] Uploading 3 file(s) in one shot through results service.
+[2025-11-13 20:38:07Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:38:07Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_27f75a0d-daa6-4801-9783-be7e52e1b2c5.1
+[2025-11-13 20:38:08Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-11-13 20:38:08Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_eabca6f4-c324-4785-bcda-18035c500b8c.1
+[2025-11-13 20:38:08Z INFO JobServerQueue] Got a job log file to send to results service.
+[2025-11-13 20:38:08Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\blocks\6f3f92e0-c003-43b8-b7b1-871c81d31d21_111c62a7-7bce-59b5-bcc5-cdf8ee82e860.1
+[2025-11-13 20:38:09Z INFO JobServerQueue] Tried to upload 3 file(s) to results, success rate: 3/3.
+[2025-11-13 20:38:09Z INFO JobServerQueue] Results upload queue drained.
+[2025-11-13 20:38:09Z INFO JobServerQueue] Timeline update queue drained.
+[2025-11-13 20:38:09Z INFO JobServerQueue] Disposing job server ...
+[2025-11-13 20:38:09Z INFO JobServerQueue] Disposing results server ...
+[2025-11-13 20:38:09Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2025-11-13 20:38:09Z INFO TempDirectoryManager] Cleaning runner temp folder: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_work\_temp
+[2025-11-13 20:38:09Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\bin'
+[2025-11-13 20:38:09Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana'
+[2025-11-13 20:38:09Z INFO HostContext] Well known directory 'Diag': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag'
+[2025-11-13 20:38:09Z INFO HostContext] Well known config file 'Telemetry': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\_diag\.telemetry'
+[2025-11-13 20:38:09Z INFO JobRunner] Raising job completed against run service
+[2025-11-13 20:38:10Z INFO Worker] Job completed.

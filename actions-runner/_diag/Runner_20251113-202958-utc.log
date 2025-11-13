@@ -1,0 +1,116 @@
+[2025-11-13 20:29:58Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.credentials'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO HostContext] Well known config file 'Runner': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.runner'
+[2025-11-13 20:29:58Z INFO Listener] Runner is built for Windows (X64) - win-x64.
+[2025-11-13 20:29:58Z INFO Listener] RuntimeInformation: Microsoft Windows 10.0.26200.
+[2025-11-13 20:29:58Z INFO Listener] Version: 2.329.0
+[2025-11-13 20:29:58Z INFO Listener] Commit: c76c59996c8fa32e989164a5a695efb12608ae5a
+[2025-11-13 20:29:58Z INFO Listener] Culture: pt-BR
+[2025-11-13 20:29:58Z INFO Listener] UI Culture: pt-BR
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO Listener] Validating directory permissions for: 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO CommandLineParser] Parse
+[2025-11-13 20:29:58Z INFO CommandLineParser] Parsing 1 args
+[2025-11-13 20:29:58Z INFO CommandLineParser] parsing argument
+[2025-11-13 20:29:58Z INFO CommandLineParser] HasArgs: False
+[2025-11-13 20:29:58Z INFO CommandLineParser] Adding Command: run
+[2025-11-13 20:29:58Z INFO Listener] Arguments parsed
+[2025-11-13 20:29:58Z INFO Runner] ExecuteCommand
+[2025-11-13 20:29:58Z INFO ConfigurationStore] currentAssemblyLocation: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin\Runner.Listener.dll
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO ConfigurationStore] binPath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO ConfigurationStore] RootFolder: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO HostContext] Well known config file 'Runner': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.runner'
+[2025-11-13 20:29:58Z INFO ConfigurationStore] ConfigFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.runner
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO HostContext] Well known config file 'MigratedRunner': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.runner_migrated'
+[2025-11-13 20:29:58Z INFO ConfigurationStore] MigratedConfigFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.runner_migrated
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.credentials'
+[2025-11-13 20:29:58Z INFO ConfigurationStore] CredFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.credentials
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.credentials_migrated'
+[2025-11-13 20:29:58Z INFO ConfigurationStore] MigratedCredFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.credentials_migrated
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO HostContext] Well known config file 'Service': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.service'
+[2025-11-13 20:29:58Z INFO ConfigurationStore] ServiceConfigFilePath: C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.service
+[2025-11-13 20:29:58Z INFO CommandSettings] Flag 'help': 'False'
+[2025-11-13 20:29:58Z INFO CommandSettings] Flag 'version': 'False'
+[2025-11-13 20:29:58Z INFO CommandSettings] Flag 'commit': 'False'
+[2025-11-13 20:29:58Z INFO CommandSettings] Flag 'check': 'False'
+[2025-11-13 20:29:58Z INFO CommandSettings] Command 'configure': 'False'
+[2025-11-13 20:29:58Z INFO CommandSettings] Command 'remove': 'False'
+[2025-11-13 20:29:58Z INFO CommandSettings] Command 'warmup': 'False'
+[2025-11-13 20:29:58Z INFO ConfigurationManager] LoadSettings
+[2025-11-13 20:29:58Z INFO ConfigurationStore] IsConfigured()
+[2025-11-13 20:29:58Z INFO ConfigurationStore] IsConfigured: True
+[2025-11-13 20:29:58Z INFO ConfigurationManager] Is configured: True
+[2025-11-13 20:29:58Z INFO ConfigurationStore] Read setting file: 432 chars
+[2025-11-13 20:29:58Z INFO ConfigurationManager] Settings Loaded
+[2025-11-13 20:29:58Z INFO ConfigurationStore] IsServiceConfigured()
+[2025-11-13 20:29:58Z INFO ConfigurationStore] IsServiceConfigured: False
+[2025-11-13 20:29:58Z INFO CommandSettings] Command 'run': 'True'
+[2025-11-13 20:29:58Z INFO ConfigurationStore] IsConfigured()
+[2025-11-13 20:29:58Z INFO ConfigurationStore] IsConfigured: True
+[2025-11-13 20:29:58Z INFO ConfigurationManager] Is configured: True
+[2025-11-13 20:29:58Z INFO Runner] Could not parse the argument value '' for StartupType. Defaulting to Manual
+[2025-11-13 20:29:58Z INFO Runner] Set runner startup type - Manual
+[2025-11-13 20:29:58Z INFO CommandSettings] Flag 'once': 'False'
+[2025-11-13 20:29:58Z INFO CommandSettings] Flag 'once': 'False'
+[2025-11-13 20:29:58Z INFO Runner] RunAsync
+[2025-11-13 20:29:58Z INFO ConfigurationManager] LoadMigratedSettings
+[2025-11-13 20:29:58Z INFO ConfigurationStore] IsMigratedConfigured()
+[2025-11-13 20:29:58Z INFO ConfigurationStore] IsMigratedConfigured: False
+[2025-11-13 20:29:58Z INFO Runner] Failed to load migrated settings: No migrated configuration found.
+[2025-11-13 20:29:58Z INFO Runner] Falling back to original .runner settings
+[2025-11-13 20:29:58Z INFO Runner] Using BrokerMessageListener
+[2025-11-13 20:29:58Z INFO BrokerMessageListener] Using provided settings
+[2025-11-13 20:29:58Z INFO BrokerMessageListener] {
+  "AgentId": 21,
+  "AgentName": "Nitro_V15docker tag monitor:latest anttonys/monitor:latest",
+  "PoolId": 1,
+  "PoolName": "Default",
+  "ServerUrl": "https://pipelinesghubeus6.actions.githubusercontent.com/znQRCgp4Kjxoygsb5IuinLJgxLlWbwPHGeYQNGrZOvmeXNM5e0/",
+  "GitHubUrl": "https://github.com/Antonyvs/Git_grafana",
+  "WorkFolder": "_work",
+  "UseV2Flow": true,
+  "ServerUrlV2": "https://broker.actions.githubusercontent.com/"
+}
+[2025-11-13 20:29:58Z INFO BrokerMessageListener] Loading Credentials
+[2025-11-13 20:29:58Z INFO ConfigurationStore] HasCredentials()
+[2025-11-13 20:29:58Z INFO ConfigurationStore] stored True
+[2025-11-13 20:29:58Z INFO CredentialManager] GetCredentialProvider
+[2025-11-13 20:29:58Z INFO CredentialManager] Creating type OAuth
+[2025-11-13 20:29:58Z INFO CredentialManager] Creating credential type: OAuth
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Bin': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\bin'
+[2025-11-13 20:29:58Z INFO HostContext] Well known directory 'Root': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner'
+[2025-11-13 20:29:58Z INFO HostContext] Well known config file 'RSACredentials': 'C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.credentials_rsaparams'
+[2025-11-13 20:29:58Z INFO RSAEncryptedFileKeyManager] Loading RSA key parameters from file C:\Users\anton\OneDrive\Documentos\GitHub\Git_grafana\actions-runner\.credentials_rsaparams
+[2025-11-13 20:29:58Z ERR  Terminal] WRITE ERROR: An error occurred: Chave inválida para uso no estado especificado.
+[2025-11-13 20:29:58Z ERR  Listener] System.Security.Cryptography.CryptographicException: Chave inválida para uso no estado especificado.
+   at System.Security.Cryptography.ProtectedData.ProtectOrUnprotect(Byte[] inputData, Byte[] optionalEntropy, DataProtectionScope scope, Boolean protect)
+   at System.Security.Cryptography.ProtectedData.Unprotect(Byte[] encryptedData, Byte[] optionalEntropy, DataProtectionScope scope)
+   at GitHub.Runner.Listener.Configuration.RSAEncryptedFileKeyManager.LoadParameters()
+   at GitHub.Runner.Listener.Configuration.RSAEncryptedFileKeyManager.GetKey()
+   at GitHub.Runner.Listener.Configuration.OAuthCredential.<>c__DisplayClass2_0.<GetVssCredentials>b__0()
+   at GitHub.Services.WebApi.VssSigningCredentials.Create(Func`1 factory, Boolean requireFipsCryptography)
+   at GitHub.Runner.Listener.Configuration.OAuthCredential.GetVssCredentials(IHostContext context, Boolean allowAuthUrlV2)
+   at GitHub.Runner.Listener.Configuration.CredentialManager.LoadCredentials(Boolean allowAuthUrlV2)
+   at GitHub.Runner.Listener.BrokerMessageListener.CreateSessionAsync(CancellationToken token)
+   at GitHub.Runner.Listener.Runner.RunAsync(RunnerSettings settings, Boolean runOnce)
+   at GitHub.Runner.Listener.Runner.ExecuteRunnerAsync(RunnerSettings settings, Boolean runOnce)
+   at GitHub.Runner.Listener.Runner.ExecuteCommand(CommandSettings command)
+   at GitHub.Runner.Listener.Program.MainAsync(IHostContext context, String[] args)

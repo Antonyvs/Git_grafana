@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "Antonyvs/Git_grafana",
+  "pipelineDirectory": "Git_grafana",
+  "workspaceDirectory": "Git_grafana\\Git_grafana",
+  "repositories": {
+    "Antonyvs/Git_grafana": {
+      "repositoryPath": "Git_grafana\\Git_grafana",
+      "lastRunOn": "11/13/2025 17:37:41 -03:00"
+    }
+  },
+  "lastRunOn": "11/13/2025 17:37:41 -03:00"
+}

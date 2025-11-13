@@ -20,7 +20,7 @@ spec:
             - containerPort: 3000   # A porta em que o serviço estará ouvindo
       # Caso a imagem seja privada, adicione a configuração de pull secret
       imagePullSecrets:
-          name: my-registry-secret1
+        - name: my-registry-secret1
 ---
 apiVersion: v1
 kind: Service
